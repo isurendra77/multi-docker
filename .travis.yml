@@ -3,16 +3,16 @@ services:
   - docker
 
 before_install:
-  - docker build -t isurendra77/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t ikalpana82/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run isurendra77/react-test npm test -- --coverage
+  - docker run ikalpana82/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t isurendra77/multi-client ./client
-  - docker build -t isurendra77/multi-nginx ./nginx
-  - docker build -t isurendra77/multi-server ./server
-  - docker build -t isurendra77/multi-worker ./worker
+  - docker build -t ikalpana82/multi-client ./client
+  - docker build -t ikalpana82/multi-nginx ./nginx
+  - docker build -t ikalpana82/multi-server ./server
+  - docker build -t ikalpana82/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
